@@ -67,30 +67,14 @@ class Welcome extends CI_Controller {
 	}
 
 	public function test_encryptv2(){
-		$plain_text = 'ayam kicap';
-		$ciphertext = $this->encryption->encrypt($plain_text);
+		$plain_text = 'Welcome to Codeigniter 3 Dreamland!!!';
 
-		$ciphertext = strtr(
-			$ciphertext,
-			array(
-				'+' => '.',
-				'=' => '-',
-				'/' => '~'
-			)
-		);
+		$ciphertext = encryptInUrl($plain_text);
 
-		echo '<a href="'.site_url("welcome/test_decrypt/".$ciphertext).'">test</a>';
+		echo 'Click here to reveal this Cipher Text <a href="'.site_url("welcome/test_decrypt/".$ciphertext).'">'.$ciphertext.'</a>';
 	}
 
 	public function test_decrypt($ciphertext){
-		$ciphertext = strtr(
-			$ciphertext,
-			array(
-				'.' => '+',
-				'-' => '=',
-				'~' => '/'
-			)
-		);
-		echo $this->encryption->decrypt($ciphertext);
+		echo decryptInUrl($ciphertext);
 	}
 }
