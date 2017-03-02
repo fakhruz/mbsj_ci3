@@ -44,6 +44,7 @@ class Func
             $CI->email->set_newline("\r\n");
             $CI->email->from($r["from"],$r["from_name"]);
             $CI->email->to($r["to"]);
+            $CI->email->cc($r["cc"]);
             $CI->email->subject($r["subject"]);
             $CI->email->message($r["message"]);
 

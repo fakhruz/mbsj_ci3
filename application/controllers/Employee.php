@@ -54,13 +54,16 @@ class Employee extends MY_Controller
     }
 
     function test_email(){
+        $dContent['title'] =  'email monkey';
+        $contentEmail = $this->load->view("employee/template_email.php", $dContent, true);
         $dt = array(
             array(
                 "from" => "fakhruz.amtis@gmail.com",
                 "from_name" => "webmaster",
-                "to" => "fakhruz85@gmail.com",
+                "to" => ["fakhruz85@gmail.com", "sukor.muhammad@gmail.com"],
+                "cc" => "amira@amtis.com.my",
                 "subject" =>"hang pasai pa",
-                "message" => "test email ja, xda pa2 pun"
+                "message" => $contentEmail
             )
         );
 
